@@ -176,6 +176,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         // custom theme menu provider
         App\Providers\MenuServiceProvider::class,
+        // Yajrabox Datatables
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // custom theme helper
         'Helper' => App\Helpers\Helper::class,
+        // Yajrabox Datatables
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];

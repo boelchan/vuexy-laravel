@@ -15,7 +15,8 @@
     "laravel/framework": "^8.26.1",
     "laravel/tinker": "^2.5",
     "laravel/ui": "^3.0",
-    "santigarcor/laratrust": "^6.3"
+    "santigarcor/laratrust": "^6.3",
+    "yajra/laravel-datatables-oracle": "^9.15"
   },
   "require-dev": {
     "facade/ignition": "^2.5",
