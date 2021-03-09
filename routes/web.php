@@ -28,7 +28,7 @@ use App\Http\Controllers\ChartsController;
 */
 
 // Main Page Route
-// Route::get('/', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('verified');
+// Route::get('/', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('role:user');
 Route::get('/', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce');
 
 Auth::routes(['verify' => true]);

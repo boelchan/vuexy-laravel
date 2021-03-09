@@ -285,9 +285,12 @@
             <a class="dropdown-item" href="{{url('page/faq')}}">
               <i class="mr-50" data-feather="help-circle"></i> FAQ
             </a>
-            <a class="dropdown-item" href="{{url('auth/login-v2')}}">
+            <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="mr-50" data-feather="power"></i> Logout
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
           </div>
         </li>
       </ul>
