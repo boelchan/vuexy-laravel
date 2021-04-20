@@ -1,20 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CardsController;
+use App\Http\Controllers\FormsController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TableController;
+use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AppsController;
-use App\Http\Controllers\UserInterfaceController;
-use App\Http\Controllers\CardsController;
-use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\ExtensionController;
+use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\PageLayoutController;
-use App\Http\Controllers\FormsController;
-use App\Http\Controllers\TableController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\MiscellaneousController;
+use App\Http\Controllers\UserInterfaceController;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\ChartsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -220,3 +221,7 @@ Route::get('/maps/leaflet', [ChartsController::class,'maps_leaflet'])->name('map
 
 // locale Route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
+
+
+Route::get('user/data_list', [UserController::class, 'data_list'])->name('user.data_list');
+Route::resource('user', UserController::class);
