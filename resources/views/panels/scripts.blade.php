@@ -1,6 +1,7 @@
 {{-- Vendor Scripts --}}
 <script src="{{ asset(mix('vendors/js/vendors.min.js')) }}"></script>
 <script src="{{ asset(mix('vendors/js/ui/prism.min.js')) }}"></script>
+<script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
 @yield('vendor-script')
 {{-- Theme Scripts --}}
 <script src="{{ asset(mix('js/core/app-menu.js')) }}"></script>
@@ -11,3 +12,7 @@
 {{-- page script --}}
 @yield('page-script')
 {{-- page script --}}
+
+{{-- custom script --}}
+<script src="{{ asset('js/custom/general-form.js') }}"></script>
+{{-- custom script --}}

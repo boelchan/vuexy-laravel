@@ -8,6 +8,7 @@ use App\Models\RoleUser;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -53,13 +54,22 @@ class UserController extends Controller
   
     public function store(Request $request)
     {
-        $request->validate([
-            'role_id'  => 'required',
-            'name'     => 'required',
-            'email'    => 'required|unique:users',
-            'password' => 'same:password-confirm',
-            'password-confirm' => 'required',
-        ]);
+        $validator = Validator::make($request->all(), 
+            [
+                'role_id'  => 'required',
+                'name'     => 'required',
+                'email'    => 'required|unique:users',
+                'password' => 'required|same:password-confirm',
+                'password-confirm' => 'required',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->getMessageBag()->toArray(),
+            ], 400);
+        }
 
         $user = new User;
 
@@ -69,9 +79,12 @@ class UserController extends Controller
         $user->save();
 
         $user->attachRole($request->role_id);
-    
-        return redirect()->route('user.index')
-                        ->with('success','User created successfully.');
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil ditambahkan',
+            'redirect' => route('user.index')
+        ]);
     }
 
     /**
@@ -115,12 +128,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'role_id'  => 'required',
-            'name'     => 'required',
-            'email'    => 'required|unique:users,email,'.$id,
-        ]);
+        $validator = Validator::make($request->all(), 
+            [
+                'role_id'  => 'required',
+                'name'     => 'required',
+                'email'    => 'required|unique:users,email,'.$id,
+            ]
+        );
 
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->getMessageBag()->toArray(),
+            ], 400);
+        }
 
         $user = User::select(['id','name','email'])
                         ->addSelect(
@@ -138,8 +159,12 @@ class UserController extends Controller
         $user->detachRole($user->role_id);
         $user->attachRole($request->role_id);
 
-        return redirect()->route('user.index')
-                        ->with('success','User updated  successfully.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil diubah',
+            'redirect' => route('user.index')
+        ]);
+
     }
 
     /**

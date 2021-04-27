@@ -26,25 +26,15 @@
           <h4 class="card-title">Form</h4>
         </div>
         <div class="card-body">
-          @if ( $errors->any() )
-              <div class="alert alert-danger">
-                  <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
       
-          <form action="{{ route('user.update', $user->id) }}" method="post">
+          <form action="{{ route('user.update', $user->id) }}" class="form_ajax" method="post">
               @csrf
               @method('PUT')
 
 
             <div class="form-group">
               <label for="customFile1">Nama</label>
-              <input type="text" name="name" class="form-control" placeholder="Nama" required value="{{ $user->name }}" />
+              <input type="text" name="name" class="form-control" placeholder="Nama" value="{{ $user->name }}" />
             </div>
 
             <div class="form-group">
@@ -65,7 +55,7 @@
 
             <div class="form-group">
               <label class="form-label" for="">Email</label>
-              <input type="email" name="email" id="" class="form-control" placeholder="email" required value="{{ $user->email }}" />
+              <input type="email" name="email" id="" class="form-control" placeholder="email" value="{{ $user->email }}" />
             </div>
 
             <div class="row">

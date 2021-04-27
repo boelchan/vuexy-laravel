@@ -26,23 +26,13 @@
           <h4 class="card-title">Form</h4>
         </div>
         <div class="card-body">
-          @if ($errors->any())
-              <div class="alert alert-danger">
-                  <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
       
-          <form action="{{ route('user.store') }}" method="POST" class="" novalidate enctype="multipart/form-data">
+          <form action="{{ route('user.store') }}" method="POST" class="form_ajax" novalidate enctype="multipart/form-data">
               @csrf
 
             <div class="form-group">
               <label for="customFile1">Nama</label>
-              <input type="text" name="name" id="" class="form-control" placeholder="Nama" required value="" />
+              <input type="text" name="name" id="" class="form-control" placeholder="Nama" value="" />
             </div>
 
             <div class="form-group">
@@ -56,7 +46,7 @@
 
             <div class="form-group">
               <label class="form-label" for="">Email</label>
-              <input type="email" name="email" id="" class="form-control" placeholder="email" required value="" />
+              <input type="email" name="email" id="" class="form-control" placeholder="email"  value="" />
             </div>
             <div class="form-group">
                 <label for="password-new">New Password</label>
@@ -119,6 +109,5 @@
   <script src="{{ asset(mix('vendors/js/pickers/flatpickr/flatpickr.min.js')) }}"></script>
 @endsection
 @section('page-script')
-  <!-- Page js files -->
-  {{-- <script src="{{ asset(mix('js/scripts/forms/form-validation.js')) }}"></script> --}}
+
 @endsection

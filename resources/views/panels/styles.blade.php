@@ -1,5 +1,8 @@
+{{-- Vendor Styles --}}
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/vendors.min.css')) }}" />
 <link rel="stylesheet" href="{{ asset(mix('vendors/css/ui/prism.min.css')) }}" />
+
+<link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
 {{-- Vendor Styles --}}
 @yield('vendor-style')
 {{-- Theme Styles --}}
@@ -15,6 +18,8 @@
 @endif
 <link rel="stylesheet" href="{{ asset(mix('css/base/core/menu/menu-types/vertical-menu.css')) }}" />
 <!-- <link rel="stylesheet" href="{{ asset(mix('css/base/core/colors/palette-gradient.css')) }}"> -->
+
+<link rel="stylesheet" href="{{asset(mix('css/base/plugins/extensions/ext-component-sweet-alerts.css'))}}">
 
 {{-- Page Styles --}}
 @yield('page-style')

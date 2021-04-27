@@ -97,8 +97,7 @@
 @section('page-script')
 
 <script>
-    $(function() {
-        $('#users-table').DataTable({
+      var table = $('#users-table').DataTable({
             processing: true,
             serverSide: true,
             ajax: '{!! route('user.data_list') !!}',
@@ -118,7 +117,6 @@
                 }
             }
         });
-    });
 </script>
   
 @endsection

@@ -67,7 +67,13 @@ var submitAjax = function(formObj,options={}) {
                         alert(e.responseJSON.message);
                     }
                 }else{
-                    alert('Maaf, telah terjadi kesalahan.');
+                    Swal.fire({
+                        title: 'Terjadi Kesalahan',
+                        text: 'Silahkan ulangi kembali',
+                        icon: 'error',
+                        timer: 1000,                
+                        showConfirmButton: false,
+                    });
                 }
             },
             success: function(response) {
