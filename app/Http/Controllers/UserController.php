@@ -28,7 +28,19 @@ class UserController extends Controller
 
         return Datatables::of($users)
                 ->addColumn('action', function ($user) {
-                    return view('user.action', compact('user'));
+                    $btn = '';
+                    if ( \Laratrust::hasRole('administrator') )
+                    {
+                        $btn = '<a href="'. route('user.edit', $user->id) .'" class="btn btn-icon btn-sm btn-flat-success" title="edit">
+                                    <i class="far fa-edit"></i>
+                                </a> ';
+    
+                        $btn .=' <a href="javascript:void(0)" data-url="'.route('user.destroy', $user->id).'" data-token="'.csrf_token().'" class="btn btn-icon btn-sm btn-flat-danger table-delete">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>';
+                    }
+
+                    return $btn;
                 })
                 ->make();
     }
@@ -176,9 +188,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-
-        return redirect()->route('user.index')
-            ->with('success','User updated  successfully.');
-
+        return response()->json(['success' => true]);
     }
 }
