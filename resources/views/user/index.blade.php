@@ -27,7 +27,7 @@
                                 <div class="form-row mb-1">
                                     <div class="col-lg-4">
                                         <label>Name:</label>
-                                        <input type="text" name="fname" class="filter form-control dt-input dt-full-name"  placeholder="Alaric Beslier"/>
+                                        <input type="text" name="fname" class="filter form-control dt-input"  placeholder="Alaric Beslier"/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Email:</label>
