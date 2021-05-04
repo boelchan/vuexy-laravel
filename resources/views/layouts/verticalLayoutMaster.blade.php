@@ -52,9 +52,9 @@
   <!-- End: Content-->
 
   @if($configData['blankPage'] == false && isset($configData['blankPage']))
-  @include('content/pages/customizer')
+  {{-- @include('content/pages/customizer') --}}
 
-  @include('content/pages/buy-now')
+  {{-- @include('content/pages/buy-now') --}}
   @endif
 
   <div class="sidenav-overlay"></div>

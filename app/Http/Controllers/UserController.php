@@ -22,11 +22,20 @@ class UserController extends Controller
         return view('user.index');
     }
 
-    public function data_list()
+    public function data_list(Request $request)
     {
         $users = User::select(['id','name','email']);
 
         return Datatables::of($users)
+                ->filter(function ($query) use ($request) {
+                    if ($request->has('name')) {
+                        $query->whereRaw('LOWER(name) like  ?', ["%{$request->post('name')}%"]);
+                    }
+
+                    if ($request->has('email')) {
+                        $query->whereRaw('LOWER(email) like  ?', ["%{$request->post('email')}%"]);
+                    }
+                })
                 ->addColumn('action', function ($user) {
                     $btn = '';
                     if ( \Laratrust::hasRole('administrator') )
