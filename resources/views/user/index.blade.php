@@ -2,7 +2,6 @@
 
 @section('title', 'User')
 
-
 @section('content')
 
 <section id="advanced-search-datatable">
