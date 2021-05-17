@@ -36,77 +36,77 @@ var dropdownAjax =  function(targetObj, send_data, url) {
 var submitAjax = function(formObj,options={}) {
     var btnObj = formObj.find('button[type=submit]');
 
-        if(formObj.attr('enctype')=="multipart/form-data"){
-            var formData = new FormData(formObj[0]);
-            options['cache'] = false;
-            options['contentType'] = false;
-            options['processData'] = false;
-        }else{
-            var formData = formObj.serialize();
-        }
-        // console.log(formData);
+    if (formObj.attr('enctype')=="multipart/form-data"){
+        var formData = new FormData(formObj[0]);
+        options['cache'] = false;
+        options['contentType'] = false;
+        options['processData'] = false;
+    } else {
+        var formData = formObj.serialize();
+    }
+    // console.log(formData);
 
-        $(".help-block-error" , formObj).remove();
-        $(".form-group" , formObj).removeClass('has-error');
-        // default settings
-        options = $.extend(true, {
-            url: formObj.attr('action'),
-            dataType: "json",
-            data: formData,
-            type: formObj.attr('method'),
+    $(".help-block-error" , formObj).remove();
+    $(".form-group" , formObj).removeClass('has-error');
+    // default settings
+    options = $.extend(true, {
+        url: formObj.attr('action'),
+        dataType: "json",
+        data: formData,
+        type: formObj.attr('method'),
 
-            beforeSend: function (e) {
-                btnObj.button('loading');
-            },
-            error: function (e) {
-                // console.log(e);
-                if (e.status == 400){
-                    form_set_errors(e.responseJSON.errors,formObj);
-                    if (e.responseJSON.message) {
-                        // toastr.error(e.responseJSON.message);
-                        alert(e.responseJSON.message);
-                    }
-                }else{
-                    Swal.fire({
-                        title: 'Terjadi Kesalahan',
-                        text: 'Silahkan ulangi kembali',
-                        icon: 'error',
-                        timer: 1000,                
-                        showConfirmButton: false,
-                    });
+        beforeSend: function (e) {
+            btnObj.button('loading');
+        },
+        error: function (e) {
+            // console.log(e);
+            if (e.status == 400){
+                form_set_errors(e.responseJSON.errors,formObj);
+                if (e.responseJSON.message) {
+                    Swal.fire('', e.responseJSON.message, 'error');
                 }
-            },
-            success: function(response) {
-                // console.log(response);
-                if (response.success) {
-                    if (options.f_response) {
-                        toastr.success(response.message);
-                        if (typeof options.f_response === "function") {
-                            options.f_response(response);
-                        }
-                    }else{
-                        form_success(response);
+            } else {
+                Swal.fire({
+                    title: 'Terjadi Kesalahan',
+                    text: 'Silahkan ulangi kembali',
+                    icon: 'error',
+                    timer: 1000,                
+                    showConfirmButton: false,
+                });
+            }
+        },
+        success: function(response) {
+            // console.log(response);
+            if (response.success) {
+                if (options.f_response) {
+                    if (typeof options.f_response === "function") {
+                        options.f_response(response);
                     }
                 } else {
-                    toastr.error(response.message);
+                    form_success(response);
                 }
-            },
-            complete:function (e) {
-                btnObj.button('reset');
+            } else {
+                Swal.fire('', rensponse.message, 'error');
             }
-        }, options);
+        },
+        complete:function (e) {
+            btnObj.button('reset');
+        }
+    }, options);
 
-        $.ajax(
-            options
-        );
+    $.ajax(
+        options
+    );
 }
 
-function form_success(response) {
-    if(response.message){
+function form_success(response) 
+{
+    if (response.message) {
         var swal_message = response.message;
-    }else{
+    } else {
         var swal_message = "Data berhasil disimpan";
     }
+
     Swal.fire({
         title: '',
         text: swal_message,
@@ -120,7 +120,8 @@ function form_success(response) {
     });
 }
 
-function form_set_errors(data_error,formObj) {
+function form_set_errors(data_error,formObj) 
+{
     // console.log(data_error);
     $.each(data_error, function(k, v) {
         var element = $("[name='"+k+"']" , formObj);
@@ -142,7 +143,55 @@ function form_set_errors(data_error,formObj) {
     });
 }
 
+$('body').on('click', '.table-delete', function () {
+    Swal.fire({
+        title: 'Apa Anda sudah yakin?',
+        text: "Data yang Anda hapus tidak dapat dikembalikan",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Tidak'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "DELETE",
+                url: $(this).data("url"),
+                data: { "_token": $(this).data('token') },
+                success: function (data) {
+                    table.draw();
+                    Swal.fire({
+                        title: 'Sukses',
+                        text: 'Data berhasil dihapus',
+                        icon: 'success',
+                        timer: 1000,                
+                        showConfirmButton: false,
+                    });
+                },
+                error: function (e) {
+                    Swal.fire({
+                        title: 'Terjadi Kesalahan',
+                        text: 'Silahkan ulangi kembali' ,
+                        icon: 'error',
+                        timer: 2000,                
+                        showConfirmButton: false,
+                    });
+                }
+            });
+        }
+    })
+});
+
+
 $('.form_ajax').submit(function(e) {
     e.preventDefault();
     submitAjax($(this));
+});
+
+/**
+ * btn untuk create
+ */
+$('.btn-link').on('click', function(e) {
+    window.location.href = $(this).data('route');
 });

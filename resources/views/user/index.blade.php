@@ -13,7 +13,7 @@
                     <div class="heading-elements mb-0">
                         <ul class="list-inline mb-0">
                             <li> <a data-toggle="collapse" data-target="#collapseFilter"><i class="fas fa-search fa-lg"></i></a> </li>
-                            <li> <a class="btn-create" data-route="{{ route('user.create') }}"><i class="fas fa-plus fa-lg"></i></a> </li>
+                            <li> <a class="btn-link" data-route="{{ route('user.create') }}"><i class="fas fa-plus fa-lg"></i></a> </li>
                         </ul>
                     </div>
                 </div>
