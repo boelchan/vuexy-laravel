@@ -46,8 +46,8 @@ var submitAjax = function(formObj,options={}) {
     }
     // console.log(formData);
 
-    $(".help-block-error" , formObj).remove();
-    $(".form-group" , formObj).removeClass('has-error');
+    $("span.error" , formObj).remove();
+    $(".form-control" , formObj).removeClass('error');
     // default settings
     options = $.extend(true, {
         url: formObj.attr('action'),
@@ -130,8 +130,8 @@ function form_set_errors(data_error,formObj)
                             .addClass("error")   // add a class
                             .html(v);
 
-        element.closest('.form-group').addClass('has-error');
-        // element.closest('.help-block').remove();
+        element.closest('.form-control').addClass('error');
+
 
         if (element.parent('.input-group').length) {
             error.insertAfter(element.parent());      // radio/checkbox?
