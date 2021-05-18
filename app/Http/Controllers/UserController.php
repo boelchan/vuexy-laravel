@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -81,16 +80,8 @@ class UserController extends Controller
                 'role_id'  => 'required',
                 'name'     => 'required',
                 'email'    => 'required|unique:users',
-                'password-confirm' => 'required|same:password',
-                'password' => [
-                    'required', 
-                    Password::min(8)
-                            // ->mixedCase()
-                            ->letters()
-                            // ->numbers()
-                            // ->symbols()
-                            // ->uncompromised()
-                        ],
+                'password' => 'required|same:password-confirm',
+                'password-confirm' => 'required',
             ]
         );
 
@@ -101,11 +92,12 @@ class UserController extends Controller
             ], 400);
         }
 
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
+        $user = new User;
+
+        $user->name     = $request->name;
+        $user->email    = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         $user->attachRole($request->role_id);
         
