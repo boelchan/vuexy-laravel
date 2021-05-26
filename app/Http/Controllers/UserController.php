@@ -29,11 +29,11 @@ class UserController extends Controller
 
         return Datatables::of($users)
                 ->filter(function ($query) use ($request) {
-                    if ($request->has('name')) {
+                    if ($request->post('name') != '') {
                         $query->whereRaw('LOWER(name) like  ?', ["%{$request->post('name')}%"]);
                     }
 
-                    if ($request->has('email')) {
+                    if ($request->post('email') != '') {
                         $query->whereRaw('LOWER(email) like  ?', ["%{$request->post('email')}%"]);
                     }
                 })
