@@ -27,6 +27,7 @@ class UserController extends Controller
         $users = User::select(['id','name','email']);
 
         return Datatables::of($users)
+                ->addIndexColumn()
                 ->filter(function ($query) use ($request) {
                     if ($request->post('name') != '') {
                         $query->whereRaw('LOWER(name) like  ?', ["%{$request->post('name')}%"]);
@@ -41,11 +42,11 @@ class UserController extends Controller
                     if ( \Laratrust::hasRole('administrator') )
                     {
                         $btn = '<a href="'. route('user.edit', $user->id) .'" class="btn btn-icon btn-sm btn-flat-success" title="edit">
-                                    <i class="far fa-edit"></i>
+                                    <i data-feather="edit-2"></i>
                                 </a> ';
     
                         $btn .=' <a href="javascript:void(0)" data-url="'.route('user.destroy', $user->id).'" data-token="'.csrf_token().'" class="btn btn-icon btn-sm btn-flat-danger table-delete">
-                                    <i class="far fa-trash-alt"></i>
+                                    <i data-feather="trash"></i>
                                 </a>';
                     }
 
