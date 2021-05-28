@@ -41,11 +41,11 @@ class UserController extends Controller
                     $btn = '';
                     if ( \Laratrust::hasRole('administrator') )
                     {
-                        $btn = '<a href="'. route('user.edit', $user->id) .'" class="btn btn-icon btn-sm btn-flat-success" title="edit">
+                        $btn = '<a href="'. route('user.edit', $user->id) .'" class="text-success" title="edit">
                                     <i data-feather="edit-2"></i>
                                 </a> ';
     
-                        $btn .=' <a href="javascript:void(0)" data-url="'.route('user.destroy', $user->id).'" data-token="'.csrf_token().'" class="btn btn-icon btn-sm btn-flat-danger table-delete">
+                        $btn .=' <a href="javascript:void(0)" data-url="'.route('user.destroy', $user->id).'" data-token="'.csrf_token().'" class="text-danger table-delete">
                                     <i data-feather="trash"></i>
                                 </a>';
                     }
