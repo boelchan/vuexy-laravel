@@ -46,10 +46,10 @@
                     <table class="dt-advanced-search table" id="users-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th></th>
+                                <th width="10%"></th>
+                                <th width="40%">Name</th>
+                                <th width="40%">Email</th>
+                                <th width="10%"></th>
                             </tr>
                         </thead>
                     </table>
@@ -81,6 +81,7 @@
             { data: 'email', name: 'email' },
             { data: 'action', name: 'action', orderable: false, searchable: false}
         ],
+        order:[[1,'asc']],
         drawCallback: function( settings ) { feather.replace() },
         dom: '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
         language: { paginate: { previous: '&nbsp;', next: '&nbsp;' } }

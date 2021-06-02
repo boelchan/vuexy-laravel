@@ -5,18 +5,21 @@
       "badge": "2",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "home",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "dashboard/analytics",
           "name": "Analytics",
           "icon": "circle",
+          "guard":["all"],
           "slug": "dashboard-analytics"
         },
         {
           "url": "/",
           "name": "eCommerce",
           "icon": "circle",
+          "guard":["all"],
           "slug": "dashboard-ecommerce"
         }
       ]
@@ -24,65 +27,76 @@
 
     {
       "navheader": "Apps & Pages",
+      "guard":["all"],
       "slug": ""
     },
     {
       "url": "app/email",
       "name": "Email",
       "icon": "mail",
+      "guard":["all"],
       "slug": "app-email"
     },
     {
       "url": "app/chat",
       "name": "Chat",
       "icon": "message-square",
+      "guard":["all"],
       "slug": "app-chat"
     },
     {
       "url": "app/todo",
       "name": "Todo",
       "icon": "check-square",
+      "guard":["all"],
       "slug": "app-todo"
     },
     {
       "url": "app/calendar",
       "name": "Calendar",
       "icon": "calendar",
+      "guard":["all"],
       "slug": "app-calendar"
     },
     {
       "url": "app/kanban",
       "name": "Kanban",
       "icon": "grid",
+      "guard":["all"],
       "slug": "app-kanban"
     },
     {
       "name": "Invoice",
       "icon": "file-text",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "app/invoice/list",
           "name": "List",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-invoice-list"
         },
         {
           "url": "app/invoice/preview",
           "name": "Preview",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-invoice-preview"
         },
         {
           "url": "app/invoice/edit",
           "name": "Edit",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-invoice-edit"
         },
         {
           "url": "app/invoice/add",
           "name": "Add",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-invoice-add"
         }
       ]
@@ -91,35 +105,41 @@
       "url": "app/file-manager",
       "name": "File Manager",
       "icon": "save",
+      "guard":["all"],
       "slug": "app-file-manager"
     },
     {
       "name": "eCommerce",
       "icon": "shopping-cart",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "app/ecommerce/shop",
           "name": "Shop",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-ecommerce-shop"
         },
         {
           "url": "app/ecommerce/details",
           "name": "Details",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-ecommerce-details"
         },
         {
           "url": "app/ecommerce/wishlist",
           "name": "Wish List",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-ecommerce-wishlist"
         },
         {
           "url": "app/ecommerce/checkout",
           "name": "Checkout",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-ecommerce-checkout"
         }
       ]
@@ -127,24 +147,28 @@
     {
       "name": "User",
       "icon": "user",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "app/user/list",
           "name": "List",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-user-list"
         },
         {
           "url": "app/user/view",
           "name": "View",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-user-view"
         },
         {
           "url": "app/user/edit",
           "name": "Edit",
           "icon": "circle",
+          "guard":["all"],
           "slug": "app-user-edit"
         }
       ]
@@ -152,58 +176,68 @@
     {
       "name": "Pages",
       "icon": "file-text",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "name": "Authentication",
           "icon": "circle",
+          "guard":["all"],
           "slug": "",
           "submenu": [
             {
               "url": "auth/login-v1",
               "name": "Login v1",
+              "guard":["all"],
               "slug": "auth-login-v1",
               "newTab": true
             },
             {
               "url": "auth/login-v2",
               "name": "Login v2",
+              "guard":["all"],
               "slug": "auth-login-v2",
               "newTab": true
             },
             {
               "url": "auth/register-v1",
               "name": "Register v1",
+              "guard":["all"],
               "slug": "auth-register-v1",
               "newTab": true
             },
             {
               "url": "auth/register-v2",
               "name": "Register v2",
+              "guard":["all"],
               "slug": "auth-register-v2",
               "newTab": true
             },
             {
               "url": "auth/forgot-password-v1",
               "name": "Forgot Password v1",
+              "guard":["all"],
               "slug": "auth-forgot-password-v1",
               "newTab": true
             },
             {
               "url": "auth/forgot-password-v2",
               "name": "Forgot Password v2",
+              "guard":["all"],
               "slug": "auth-forgot-password-v2",
               "newTab": true
             },
             {
               "url": "auth/reset-password-v1",
               "name": "Reset Password v1",
+              "guard":["all"],
               "slug": "auth-reset-password-v1",
               "newTab": true
             },
             {
               "url": "auth/reset-password-v2",
               "name": "Reset Password v2",
+              "guard":["all"],
               "slug": "auth-reset-password-v2",
               "newTab": true
             }
@@ -213,79 +247,92 @@
           "url": "page/account-settings",
           "name": "Account Settings",
           "icon": "circle",
+          "guard":["all"],
           "slug": "page-account-settings"
         },
         {
           "url": "page/profile",
           "name": "Profile",
           "icon": "circle",
+          "guard":["all"],
           "slug": "page-profile"
         },
         {
           "url": "page/faq",
           "name": "FAQ",
           "icon": "circle",
+          "guard":["all"],
           "slug": "page-faq"
         },
         {
           "url": "page/knowledge-base",
           "name": "Knowledge Base",
           "icon": "circle",
+          "guard":["all"],
           "slug": "page-knowledge-base"
         },
         {
           "url": "page/pricing",
           "name": "Pricing",
           "icon": "circle",
+          "guard":["all"],
           "slug": "page-pricing"
         },
         {
           "name": "Blog",
           "icon": "circle",
+          "guard":["all"],
           "slug": "",
           "submenu": [
-            { "url": "page/blog/list", "name": "List", "slug": "page-blog-list" },
-            { "url": "page/blog/detail", "name": "Detail", "slug": "page-blog-detail" },
-            { "url": "page/blog/edit", "name": "Edit", "slug": "page-blog-edit" }
+            { "url": "page/blog/list", "name": "List", "guard":["all"], "slug": "page-blog-list" },
+            { "url": "page/blog/detail", "name": "Detail", "guard":["all"], "slug": "page-blog-detail" },
+            { "url": "page/blog/edit", "name": "Edit", "guard":["all"], "slug": "page-blog-edit" }
           ]
         },
         {
           "name": "Mail Template",
           "icon": "circle",
+          "guard":["all"],
           "slug": "",
           "submenu": [
             {
               "name": "Welcome",
+              "guard":["all"],
               "slug": "mail-welcome",
               "url": "https://pixinvent.com/demo/vuexy-mail-template/mail-welcome.html",
               "newTab": true
             },
             {
               "name": "Reset Password",
+              "guard":["all"],
               "slug": "mail-forgot",
               "url": "https://pixinvent.com/demo/vuexy-mail-template/mail-reset-password.html",
               "newTab": true
             },
             {
               "name": "Verify Email",
+              "guard":["all"],
               "slug": "mail-verify",
               "url": "https://pixinvent.com/demo/vuexy-mail-template/mail-verify-email.html",
               "newTab": true
             },
             {
               "name": "Deactivate Account",
+              "guard":["all"],
               "slug": "mail-deactivate",
               "url": "https://pixinvent.com/demo/vuexy-mail-template/mail-deactivate-account.html",
               "newTab": true
             },
             {
               "name": "Invoice",
+              "guard":["all"],
               "slug": "mail-invoice",
               "url": "https://pixinvent.com/demo/vuexy-mail-template/mail-invoice.html",
               "newTab": true
             },
             {
               "name": "Promotional",
+              "guard":["all"],
               "slug": "mail-promotional",
               "url": "https://pixinvent.com/demo/vuexy-mail-template/mail-promotional.html",
               "newTab": true
@@ -295,29 +342,34 @@
         {
           "name": "Miscellaneous",
           "icon": "circle",
+          "guard":["all"],
           "slug": "",
           "submenu": [
             {
               "url": "page/coming-soon",
               "name": "Coming Soon",
+              "guard":["all"],
               "slug": "misc-analytics",
               "newTab": true
             },
             {
               "url": "page/not-authorized",
               "name": "Not Authorized",
+              "guard":["all"],
               "slug": "misc-analytics",
               "newTab": true
             },
             {
               "url": "page/maintenance",
               "name": "Maintenance",
+              "guard":["all"],
               "slug": "misc-analytics",
               "newTab": true
             },
             {
               "url": "error",
               "name": "Error",
+              "guard":["all"],
               "slug": "error",
               "newTab": true
             }
@@ -327,30 +379,35 @@
     },
     {
       "navheader": "User Interface",
+      "guard":["all"],
       "slug": ""
     },
     {
       "url": "ui/typography",
       "name": "Typography",
       "icon": "type",
+      "guard":["all"],
       "slug": "ui-typography"
     },
     {
       "url": "ui/colors",
       "name": "Colors",
       "icon": "droplet",
+      "guard":["all"],
       "slug": "ui-colors"
     },
     {
       "url": "icons/feather",
       "name": "Feather",
       "icon": "eye",
+      "guard":["all"],
       "slug": "icons-feather"
     },
     {
       "name": "Card",
       "icon": "credit-card",
       "badge": "New",
+      "guard":["all"],
       "slug": "",
       "badgeClass": "badge badge-light-success badge-pill ml-auto mr-1",
       "submenu": [
@@ -358,30 +415,35 @@
           "url": "card/basic",
           "name": "Basic",
           "icon": "circle",
+          "guard":["all"],
           "slug": "card-basic"
         },
         {
           "url": "card/advance",
           "name": "Advance",
           "icon": "circle",
+          "guard":["all"],
           "slug": "card-advance"
         },
         {
           "url": "card/statistics",
           "name": "Statistics",
           "icon": "circle",
+          "guard":["all"],
           "slug": "card-statistics"
         },
         {
           "url": "card/analytics",
           "name": "Analytics",
           "icon": "circle",
+          "guard":["all"],
           "slug": "card-analytics"
         },
         {
           "url": "card/actions",
           "name": "Card Actions",
           "icon": "circle",
+          "guard":["all"],
           "slug": "card-actions"
         }
       ]
@@ -389,144 +451,168 @@
     {
       "name": "Components",
       "icon": "briefcase",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "component/alert",
           "name": "Alerts",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-alert"
         },
         {
           "url": "component/avatar",
           "name": "Avatar",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-avatar"
         },
         {
           "url": "component/badges",
           "name": "Badges",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-badges"
         },
         {
           "url": "component/breadcrumbs",
           "name": "Breadcrumbs",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-breadcrumbs"
         },
         {
           "url": "component/buttons",
           "name": "Buttons",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-buttons"
         },
         {
           "url": "component/carousel",
           "name": "Carousel",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-carousel"
         },
         {
           "url": "component/collapse",
           "name": "Collapse",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-collapse"
         },
         {
           "url": "component/divider",
           "name": "Divider",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-divider"
         },
         {
           "url": "component/dropdowns",
           "name": "Dropdowns",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-dropdowns"
         },
         {
           "url": "component/list-group",
           "name": "List Group",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-list-group"
         },
         {
           "url": "component/media-objects",
           "name": "Media Objects",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-media-objects"
         },
         {
           "url": "component/modals",
           "name": "Modals",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-modals"
         },
         {
           "url": "component/navs",
           "name": "Navs Component",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-navs"
         },
         {
           "url": "component/pagination",
           "name": "Pagination",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-pagination"
         },
         {
           "url": "component/pill-badges",
           "name": "Pill Badges",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-pill-badges"
         },
         {
           "url": "component/pills",
           "name": "Pills Component",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-pills"
         },
         {
           "url": "component/popovers",
           "name": "Popovers",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-popovers"
         },
         {
           "url": "component/progress",
           "name": "Progress",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-progress"
         },
         {
           "url": "component/spinner",
           "name": "Spinner",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-spinner"
         },
         {
           "url": "component/tabs",
           "name": "Tabs Component",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-tabs"
         },
         {
           "url": "component/timeline",
           "name": "Timeline",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-timeline"
         },
         {
           "url": "component/toast",
           "name": "Toasts",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-toast"
         },
         {
           "url": "component/tooltips",
           "name": "Tooltips",
           "icon": "circle",
+          "guard":["all"],
           "slug": "component-tooltips"
         }
       ]
@@ -534,84 +620,98 @@
     {
       "name": "Extensions",
       "icon": "box",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "ext-component/sweet-alerts",
           "name": "Sweet Alert",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-sweet-alerts"
         },
         {
           "url": "ext-component/block-ui",
           "name": "BlockUI",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-block-ui"
         },
         {
           "url": "ext-component/toastr",
           "name": "Toastr",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-toastr"
         },
         {
           "url": "ext-component/slider",
           "name": "Slider",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-slider"
         },
         {
           "url": "ext-component/drag-drop",
           "name": "Drag & Drop",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-drag-drop"
         },
         {
           "url": "ext-component/tour",
           "name": "Tour",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-tour"
         },
         {
           "url": "ext-component/clipboard",
           "name": "Clipboard",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-clipboard"
         },
         {
           "url": "ext-component/plyr",
           "name": "Media Player",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-plyr"
         },
         {
           "url": "ext-component/context-menu",
           "name": "Context Menu",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-context-menu"
         },
         {
           "url": "ext-component/swiper",
           "name": "Swiper",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-swiper"
         },
         {
           "url": "ext-component/tree",
           "name": "Tree",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-tree"
         },
         {
           "url": "ext-component/ratings",
           "name": "Ratings",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-ratings"
         },
         {
           "url": "ext-component/locale",
           "name": "Locale",
           "icon": "circle",
+          "guard":["all"],
           "slug": "ext-component-locale"
         }
       ]
@@ -619,119 +719,139 @@
     {
       "name": "Page Layouts",
       "icon": "layout",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "page-layouts/collapsed-menu",
           "name": "Collapsed Menu",
           "icon": "circle",
+          "guard":["all"],
           "slug": "layout-collapsed-menu"
         },
         {
           "url": "page-layouts/boxed",
           "name": "Layout Boxed",
           "icon": "circle",
+          "guard":["all"],
           "slug": "layout-boxed"
         },
         {
           "url": "page-layouts/without-menu",
           "name": "Without Menu",
           "icon": "circle",
+          "guard":["all"],
           "slug": "layout-without-menu"
         },
         {
           "url": "page-layouts/empty",
           "name": "Layout Empty",
           "icon": "circle",
+          "guard":["all"],
           "slug": "layout-empty"
         },
         {
           "url": "page-layouts/blank",
           "name": "Layout Blank",
           "icon": "circle",
+          "guard":["all"],
           "slug": "layout-blank"
         }
       ]
     },
     {
       "navheader": "Forms & Tables",
+      "guard":["all"],
       "slug": ""
     },
     {
       "name": "Form Elements",
       "icon": "copy",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "form/input",
           "name": "Input",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-input"
         },
         {
           "url": "form/input-groups",
           "name": "Input Groups",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-input-groups"
         },
         {
           "url": "form/input-mask",
           "name": "Input Mask",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-input-mask"
         },
         {
           "url": "form/textarea",
           "name": "Textarea",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-textarea"
         },
         {
           "url": "form/checkbox",
           "name": "Checkbox",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-checkbox"
         },
         {
           "url": "form/radio",
           "name": "Radio",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-radio"
         },
         {
           "url": "form/switch",
           "name": "Switch",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-switch"
         },
         {
           "url": "form/select",
           "name": "Select",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-select"
         },
         {
           "url": "form/number-input",
           "name": "Number Input",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-number-input"
         },
         {
           "url": "form/file-uploader",
           "name": "File Uploader",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-file-uploader"
         },
         {
           "url": "form/quill-editor",
           "name": "Quill Editor",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-quill-editor"
         },
         {
           "url": "form/date-time-picker",
           "name": "Date & Time Picker",
           "icon": "circle",
+          "guard":["all"],
           "slug": "form-date-time-picker"
         }
       ]
@@ -740,47 +860,55 @@
       "url": "form/layout",
       "name": "Form Layout",
       "icon": "box",
+      "guard":["all"],
       "slug": "form-layout"
     },
     {
       "url": "form/wizard",
       "name": "Form Wizard",
       "icon": "package",
+      "guard":["all"],
       "slug": "form-wizard"
     },
     {
       "url": "form/validation",
       "name": "Form Validation",
       "icon": "check-circle",
+      "guard":["all"],
       "slug": "form-validation"
     },
     {
       "url": "form/repeater",
       "name": "Form Repeater",
       "icon": "rotate-cw",
+      "guard":["all"],
       "slug": "form-repeater"
     },
     {
       "url": "table",
       "name": "Table",
       "icon": "server",
+      "guard":["all"],
       "slug": "table"
     },
     {
       "name": "Datatable",
       "icon": "grid",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "url": "table/datatable/basic",
           "name": "Basic",
           "icon": "circle",
+          "guard":["all"],
           "slug": "datatable-basic"
         },
         {
           "url": "table/datatable/advance",
           "name": "Advanced",
           "icon": "circle",
+          "guard":["all"],
           "slug": "datatable-advance"
         }
       ]
@@ -789,17 +917,20 @@
       "url": "table/ag-grid",
       "name": "agGrid Table",
       "icon": "grid",
+      "guard":["all"],
       "slug": "ag-grid"
     },
 
     {
       "navheader": "Charts & Maps",
+      "guard":["all"],
       "slug": ""
     },
     {
       "name": "Charts",
       "icon": "pie-chart",
       "badge": "2",
+      "guard":["all"],
       "slug": "",
       "badgeClass": "badge badge-pill badge-light-danger ml-auto mr-1",
       "submenu": [
@@ -807,12 +938,14 @@
           "url": "chart/apex",
           "name": "Apex",
           "icon": "circle",
+          "guard":["all"],
           "slug": "chart-apex"
         },
         {
           "url": "chart/chartjs",
           "name": "Chartjs",
           "icon": "circle",
+          "guard":["all"],
           "slug": "chart-chartjs"
         }
       ]
@@ -821,33 +954,40 @@
       "url": "maps/leaflet",
       "name": "Leaflet Maps",
       "icon": "map",
+      "guard":["all"],
       "slug": "map-leaflet"
     },
     {
       "navheader": "Misc",
+      "guard":["all"],
       "slug": ""
     },
     {
       "name": "Menu Levels",
       "icon": "menu",
+      "guard":["all"],
       "slug": "",
       "submenu": [
         {
           "name": "Second Level 2.1",
           "icon": "circle",
+          "guard":["all"],
           "slug": "menu-level"
         },
         {
           "name": "Second Level 2.2",
           "icon": "circle",
+          "guard":["all"],
           "slug": "",
           "submenu": [
             {
               "name": "Third Level 3.1",
+              "guard":["all"],
               "slug": "menu-level"
             },
             {
               "name": "Third Level 3.2",
+              "guard":["all"],
               "slug": "menu-level"
             }
           ]
@@ -858,12 +998,14 @@
       "name": "Disabled Menu",
       "icon": "eye-off",
       "classlist": "disabled",
+      "guard":["all"],
       "slug": "menu-disabled"
     },
     {
       "url": "https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation/documentation-laravel-folder-structure.html",
       "name": "Documentation",
       "icon": "folder",
+      "guard":["all"],
       "slug": "documentation",
       "newTab": true
     },
@@ -871,6 +1013,7 @@
       "url": "https://pixinvent.ticksy.com/",
       "name": "Raise Support",
       "icon": "life-buoy",
+      "guard":["all"],
       "slug": "raise-support",
       "newTab": true
     }

@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Config;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class Helper
@@ -159,5 +160,26 @@ class Helper
                 }
             }
         }
+    }
+
+    public static function rupiah($var)
+    {
+        if (is_int($var) && !empty($var)) {
+            return 'Rp '.number_format($var, 0, ',', '.');
+        }
+        return '-';
+    }
+
+    public static function angka($var)
+    {
+        if (is_int($var)) {
+            return number_format($var, 0, ',', '.');
+        }
+        return '-';
+    }
+
+    public static function tanggal($var)
+    {
+        return (new Carbon($var))->format('d-m-Y');
     }
 }
