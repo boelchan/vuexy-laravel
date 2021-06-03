@@ -285,12 +285,21 @@
             <a class="dropdown-item" href="{{url('page/faq')}}">
               <i class="mr-50" data-feather="help-circle"></i> FAQ
             </a>
-            <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="mr-50" data-feather="power"></i> Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-          </form>
+            @if (Auth::check())
+              <a class="dropdown-item" href="{{ route('change-password.index')}}">
+                <i class="mr-50" data-feather="settings"></i> Ubah Password
+              </a>
+              <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="mr-50" data-feather="power"></i> Logout
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+            @else
+              <a class="dropdown-item" href="{{ route('change-password.index')}}">
+              <i class="mr-50" data-feather="log-in"></i> Login
+            </a>            
+            @endif
           </div>
         </li>
       </ul>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppsController;
 use App\Http\Controllers\UserController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\PageLayoutController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\UserInterfaceController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -223,5 +225,11 @@ Route::get('/maps/leaflet', [ChartsController::class,'maps_leaflet'])->name('map
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 
-Route::get('user/data_list', [UserController::class, 'data_list'])->name('user.data_list');
-Route::resource('user', UserController::class);
+Route::middleware('role:administrator')->group(function () {
+  Route::get('user/data_list', [UserController::class, 'data_list'])->name('user.data_list');
+  Route::resource('user', UserController::class);
+
+  Route::get('change-password', [ChangePasswordController::class, 'index'])->name('change-password.index');
+  Route::put('change-password', [ChangePasswordController::class, 'change'])->name('change-password.store');
+});
+    
