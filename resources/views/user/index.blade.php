@@ -69,7 +69,7 @@
         processing: true,
         serverSide: true,
         ajax: {
-            url : '{!! route('user.data_list') !!}',
+            url : '{!! route('user.data.list') !!}',
             data: function (d) {
                 d.name  = $('input[name=fname]').val();
                 d.email = $('input[name=femail]').val();

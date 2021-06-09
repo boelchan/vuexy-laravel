@@ -226,7 +226,9 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 
 Route::middleware('role:administrator')->group(function () {
-  Route::get('user/data_list', [UserController::class, 'data_list'])->name('user.data_list');
+  Route::get('user/{user_id}/change-password', [UserController::class, 'changePassword'])->name('user.change.password');
+  Route::put('user/change-password-store', [UserController::class, 'changePasswordStore'])->name('user.change.password.store');
+  Route::get('user/data-list', [UserController::class, 'dataList'])->name('user.data.list');
   Route::resource('user', UserController::class);
 
   Route::get('change-password', [ChangePasswordController::class, 'index'])->name('change-password.index');
