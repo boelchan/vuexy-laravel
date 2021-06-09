@@ -1,7 +1,7 @@
 
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Tambah data')
+@section('title', 'User')
 
 @section('content')
 
@@ -10,7 +10,7 @@
         <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Form</h4>
+                    <h4 class="card-title">Tambah Data</h4>
                 </div>
 
                 <div class="card-body">

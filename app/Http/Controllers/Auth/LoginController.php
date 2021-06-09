@@ -41,23 +41,24 @@ class LoginController extends Controller
     }
 
     // Login
-    public function showLoginForm(){
-      $pageConfigs = [
-          'bodyClass' => "bg-full-screen-image",
-          'blankPage' => true
-      ];
+    public function showLoginForm()
+    {
+        $pageConfigs = [
+            'bodyClass' => "bg-full-screen-image",
+            'blankPage' => true
+        ];
 
-      return view('/auth/login', [
-          'pageConfigs' => $pageConfigs
-      ]);
+        return view('/auth/login', [
+            'pageConfigs' => $pageConfigs
+        ]);
     }
 
-    public function logout(Request $request)
+    protected function authenticated(Request $request, $user)
     {
-        Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
+        if (!Auth::user()->active) {
+            Auth::logout();
+            return redirect('login')->withErrors(['Your account is inactive']);
+        }
+        return redirect(route('user.index'));
     }
 }

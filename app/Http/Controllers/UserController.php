@@ -22,37 +22,47 @@ class UserController extends Controller
         return view('user.index');
     }
 
-    public function data_list(Request $request)
+    public function dataList(Request $request)
     {
-        $users = User::select(['id','name','email']);
+        $users = User::select(['id', 'name', 'email', 'active']);
 
         return Datatables::of($users)
-                ->addIndexColumn()
-                ->filter(function ($query) use ($request) {
-                    if ($request->post('name') != '') {
-                        $query->whereRaw('LOWER(name) like  ?', ["%{$request->post('name')}%"]);
-                    }
+            ->addIndexColumn()
+            ->filter(function ($query) use ($request) {
+                if ($request->post('name') != '') {
+                    $query->whereRaw('LOWER(name) like  ?', ["%{$request->post('name')}%"]);
+                }
 
-                    if ($request->post('email') != '') {
-                        $query->whereRaw('LOWER(email) like  ?', ["%{$request->post('email')}%"]);
-                    }
-                })
-                ->addColumn('action', function ($user) {
-                    $btn = '';
-                    if ( \Laratrust::hasRole('administrator') )
-                    {
-                        $btn = '<a href="'. route('user.edit', $user->id) .'" class="text-success" title="edit">
+                if ($request->post('email') != '') {
+                    $query->whereRaw('LOWER(email) like  ?', ["%{$request->post('email')}%"]);
+                }
+            })
+            ->editColumn('active', function ($user) {
+                if ($user->active == 1) {
+                    return '<span class="badge badge-success"> Aktif </span>';
+                } else {
+                    return '<span class="badge badge-danger"> Tidak Aktif </span>';
+                }
+            })
+            ->addColumn('action', function ($user) {
+                $btn = '';
+                if (\Laratrust::hasRole('administrator')) {
+                    $btn = '<a href="' . route('user.edit', $user->id) . '" class="text-success" title="edit">
                                     <i data-feather="edit-2"></i>
                                 </a> ';
-    
-                        $btn .=' <a href="javascript:void(0)" data-url="'.route('user.destroy', $user->id).'" data-token="'.csrf_token().'" class="text-danger table-delete">
+                    if ($user->id !== 1) {
+                        $btn .= ' <a href="javascript:void(0)" data-url="' . route('user.destroy', $user->id) . '" data-token="' . csrf_token() . '" class="text-danger table-delete">
                                     <i data-feather="trash"></i>
                                 </a>';
                     }
-
-                    return $btn;
-                })
-                ->make();
+                    $btn .= '<a href="' . route('user.change.password', $user->id) . '" class="text-warning" title="ubah password">
+                        <i data-feather="key"></i>
+                    </a> ';
+                }
+                return $btn;
+            })
+            ->rawColumns(['active', 'action'])
+            ->make();
     }
 
     /**
@@ -73,10 +83,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-  
+
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), 
+        $validator = Validator::make(
+            $request->all(),
             [
                 'role_id'  => 'required',
                 'name'     => 'required',
@@ -101,7 +112,7 @@ class UserController extends Controller
         $user->save();
 
         $user->attachRole($request->role_id);
-        
+
         return response()->json([
             'success' => true,
             'message' => 'Data berhasil ditambahkan',
@@ -117,7 +128,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -130,13 +140,13 @@ class UserController extends Controller
     {
         $roles = Role::pluck('display_name', 'id')->all();
 
-        $user = User::select(['id','name','email'])
-                        ->addSelect(
-                            [
-                                'role_id' => RoleUser::select('role_id')->whereColumn('user_id', 'users.id')->limit(1)
-                            ]
-                        )
-                        ->firstWhere('id', $id);
+        $user = User::select(['id', 'name', 'email', 'active'])
+            ->addSelect(
+                [
+                    'role_id' => RoleUser::select('role_id')->whereColumn('user_id', 'users.id')->limit(1)
+                ]
+            )
+            ->firstWhere('id', $id);
 
         return view('user.edit', compact('roles', 'user'));
     }
@@ -150,11 +160,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), 
+        $validator = Validator::make(
+            $request->all(),
             [
-                'role_id'  => 'required',
-                'name'     => 'required',
-                'email'    => 'required|unique:users,email,'.$id,
+                'role_id' => 'required',
+                'name'    => 'required',
+                'email'   => 'required|unique:users,email,' . $id,
+                'active'  => 'required',
             ]
         );
 
@@ -165,16 +177,17 @@ class UserController extends Controller
             ], 400);
         }
 
-        $user = User::select(['id','name','email'])
-                        ->addSelect(
-                            [
-                                'role_id' => RoleUser::select('role_id')->whereColumn('user_id', 'users.id')->limit(1)
-                            ]
-                        )
-                        ->findorFail($id);
+        $user = User::select(['id', 'name', 'email'])
+            ->addSelect(
+                [
+                    'role_id' => RoleUser::select('role_id')->whereColumn('user_id', 'users.id')->limit(1)
+                ]
+            )
+            ->findorFail($id);
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->active = $request->active;
 
         $user->save();
 
@@ -186,7 +199,6 @@ class UserController extends Controller
             'message' => 'Data berhasil diubah',
             'redirect' => route('user.index')
         ]);
-
     }
 
     /**
@@ -199,5 +211,40 @@ class UserController extends Controller
     {
         User::destroy($id);
         return response()->json(['success' => true]);
+    }
+
+    public function changePassword($user_id)
+    {
+        $user = User::findorFail($user_id);
+        return view('user.change-password', compact('user'));
+    }
+
+    public function changePasswordStore(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'user_id' => ['required'],
+                'new_password' => ['required'],
+                'new_confirm_password' => ['same:new_password']
+            ],
+        );
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->getMessageBag()->toArray(),
+            ], 400);
+        }
+
+        $user = User::findorFail($request->user_id);
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json([
+            'success'  => true,
+            'message'  => 'Password berhasil diperbarui',
+            'redirect' => route('user.index')
+        ]);
     }
 }
