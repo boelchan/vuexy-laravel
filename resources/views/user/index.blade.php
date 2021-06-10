@@ -46,10 +46,11 @@
                     <table class="dt-advanced-search table" id="users-table">
                         <thead>
                             <tr>
-                                <th width="10%"></th>
-                                <th width="40%">Name</th>
-                                <th width="40%">Email</th>
-                                <th width="10%"></th>
+                                <th width="3%"></th>
+                                <th width="45%">Name</th>
+                                <th width="30%">Email</th>
+                                <th width="10%">Active</th>
+                                <th width="12%"></th>
                             </tr>
                         </thead>
                     </table>
@@ -79,6 +80,7 @@
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false},
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
+            { data: 'active', name: 'active' },
             { data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         order:[[1,'asc']],

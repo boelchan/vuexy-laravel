@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function dataList(Request $request)
     {
-        $users = User::select(['id', 'name', 'email']);
+        $users = User::select(['id', 'name', 'email', 'active']);
 
         return Datatables::of($users)
             ->addIndexColumn()
@@ -35,6 +35,13 @@ class UserController extends Controller
 
                 if ($request->post('email') != '') {
                     $query->whereRaw('LOWER(email) like  ?', ["%{$request->post('email')}%"]);
+                }
+            })
+            ->editColumn('active', function ($user) {
+                if ($user->active == 1) {
+                    return '<span class="badge badge-success"> Aktif </span>';
+                } else {
+                    return '<span class="badge badge-danger"> Tidak Aktif </span>';
                 }
             })
             ->addColumn('action', function ($user) {
@@ -49,12 +56,12 @@ class UserController extends Controller
                                 </a>';
                     }
                     $btn .= '<a href="' . route('user.change.password', $user->id) . '" class="text-warning" title="ubah password">
-                                <i data-feather="key"></i>
-                            </a> ';
+                        <i data-feather="key"></i>
+                    </a> ';
                 }
-
                 return $btn;
             })
+            ->rawColumns(['active', 'action'])
             ->make();
     }
 
@@ -133,7 +140,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('display_name', 'id')->all();
 
-        $user = User::select(['id', 'name', 'email'])
+        $user = User::select(['id', 'name', 'email', 'active'])
             ->addSelect(
                 [
                     'role_id' => RoleUser::select('role_id')->whereColumn('user_id', 'users.id')->limit(1)
@@ -156,9 +163,10 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'role_id'  => 'required',
-                'name'     => 'required',
-                'email'    => 'required|unique:users,email,' . $id,
+                'role_id' => 'required',
+                'name'    => 'required',
+                'email'   => 'required|unique:users,email,' . $id,
+                'active'  => 'required',
             ]
         );
 
@@ -179,6 +187,7 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->active = $request->active;
 
         $user->save();
 

@@ -59,6 +59,6 @@ class LoginController extends Controller
             Auth::logout();
             return redirect('login')->withErrors(['Your account is inactive']);
         }
-        return redirect(route('dashboard-index'));
+        return redirect(route('user.index'));
     }
 }

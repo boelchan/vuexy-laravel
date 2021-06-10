@@ -1,7 +1,6 @@
-
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Operator')
+@section('title', 'user')
 
 @section('content')
 
@@ -15,7 +14,7 @@
                 <div class="card-body">
 
                     <form method="POST" action="{{ route('user.change.password.store') }}" class="form_ajax">
-                        @csrf 
+                        @csrf
                         @method('PUT')
 
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -38,20 +37,22 @@
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Password Baru</label>
-  
+
                             <div class="col-md-6">
-                                <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
+                                <input id="new_password" type="password" class="form-control" name="new_password">
                             </div>
                         </div>
-  
+
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Konfirmasi Password Baru</label>
-    
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Konfirmasi Password
+                                Baru</label>
+
                             <div class="col-md-6">
-                                <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                                <input id="new_confirm_password" type="password" class="form-control"
+                                    name="new_confirm_password">
                             </div>
                         </div>
-   
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -60,8 +61,6 @@
                             </div>
                         </div>
                     </form>
-                    
-                    
                 </div>
             </div>
         </div>
